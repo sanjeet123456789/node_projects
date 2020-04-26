@@ -1,0 +1,43 @@
+<html>
+<head><title>THis is good</title></head>
+<body>
+<form action="/email" method="POST" id="form">
+<div class="form-group">
+	<label for="email">Email Address:</label>
+	<input type="email" class="form-control" name="email" />
+</div>
+<div class="form-group">
+	<label for="pwd">password</label>
+	<input type="password" class="btn btn-default" name="password" />
+</div>
+<input type="submit" class="btn btn-default" />
+
+
+</form> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+$(document).ready(()=>{
+	$('#form').submit((e)=>{
+		e.preventDefault();
+		$.ajax({
+		url:'/email',
+		type:'post',
+		contentType:'application/json',
+		data:JSON.stringify($('#form').serializeArray()),
+		success:(response)=>{
+			console.log('sucessfully got respoonse');	
+console.log(response);
+				
+			}
+
+
+	
+		});
+	});
+
+});
+</script>
+
+<body>
+
+</html>
