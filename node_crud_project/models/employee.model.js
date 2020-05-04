@@ -1,16 +1,23 @@
-const moongoose=require('mongoose');
-var employeeSchema=new moongoose.Schema({
-    fullName:{
+const mongoose=require('mongoose');
+var employeeSchema=new mongoose.Schema({
+    fullName: {
+        type: String,
+        require:'This field is required.'
+    },
+    email: {
         type: String
     },
-    email:{
+    mobile:{ 
         type: String
     },
-    mobile:{
-        type: String
-    },
-    city:{
+    city: {
         type: String
     }
 });
-moongoose.model('Employee',employeeSchema);
+
+// custom validation for email
+/*employeeSchema.path('email').validate((val)=>{
+    //emailRegex="";
+    return emailRegex.test(val);
+},'invalid e-mail');*/
+mongoose.model('Employee',employeeSchema);
